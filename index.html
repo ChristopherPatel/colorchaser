@@ -1,19 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta
         name="description"
-        content="Color Chaser is a colorful learning and reaction game for children.">
+        content="Color Chaser – eine farbenfrohe Lern- und Reaktionsspiel-App für Kinder.">
 
     <title>Color Chaser</title>
 
     <style>
+        :root {
+            color-scheme: light;
+            --text: #17324d;
+            --primary: #1268aa;
+            --success: #287d3c;
+            --warning-bg: #fff8dc;
+            --warning-border: #d2a72c;
+        }
+
         * {
             box-sizing: border-box;
         }
@@ -22,12 +27,11 @@
             min-height: 100vh;
             margin: 0;
             padding: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: Arial, sans-serif;
+            display: grid;
+            place-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
             text-align: center;
-            color: #17324d;
             background:
                 linear-gradient(
                     180deg,
@@ -38,34 +42,81 @@
         }
 
         main {
-            width: 100%;
-            max-width: 650px;
-            padding: 48px 30px;
+            width: min(100%, 680px);
+            padding: 42px 28px;
             border-radius: 28px;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 16px 45px rgba(0, 0, 0, 0.20);
         }
 
         h1 {
-            margin: 0 0 20px;
+            margin: 0 0 18px;
             font-size: clamp(3rem, 10vw, 5rem);
-            color: #1268aa;
+            color: var(--primary);
         }
 
         p {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             line-height: 1.6;
         }
 
         .status {
             display: inline-block;
-            margin-top: 22px;
-            padding: 14px 26px;
+            margin: 10px 0 28px;
+            padding: 12px 22px;
             border-radius: 999px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: white;
-            background: #449c3f;
+            font-weight: 700;
+            color: #fff;
+            background: var(--success);
+        }
+
+        .test-panel {
+            margin-top: 10px;
+            padding: 22px;
+            border: 2px solid var(--warning-border);
+            border-radius: 18px;
+            background: var(--warning-bg);
+        }
+
+        .test-panel h2 {
+            margin: 0 0 8px;
+            font-size: 1.35rem;
+        }
+
+        .test-note {
+            margin: 0 0 18px;
+            font-size: 0.98rem;
+        }
+
+        .play-store-link {
+            display: inline-block;
+            border-radius: 10px;
+            transition:
+                transform 140ms ease,
+                box-shadow 140ms ease;
+        }
+
+        .play-store-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.22);
+        }
+
+        .play-store-link:focus-visible {
+            outline: 4px solid #1a73e8;
+            outline-offset: 4px;
+        }
+
+        .play-store-badge {
+            display: block;
+            width: 220px;
+            max-width: 100%;
+            height: auto;
+        }
+
+        footer {
+            margin-top: 26px;
+            font-size: 0.86rem;
+            color: #4c5b68;
         }
     </style>
 </head>
@@ -75,17 +126,41 @@
         <h1>Color Chaser</h1>
 
         <p>
-            A colorful learning and reaction game designed
-            especially for children.
-        </p>
-
-        <p>
-            Color Chaser will soon be available on Google Play.
+            Eine farbenfrohe Lern- und Reaktionsspiel-App,
+            die speziell für Kinder entwickelt wird.
         </p>
 
         <div class="status">
-            Coming soon
+            Bald bei Google Play
         </div>
+
+        <section class="test-panel" aria-labelledby="test-heading">
+            <h2 id="test-heading">Test des Google-Play-Links</h2>
+
+            <p class="test-note">
+                Dieser Testbutton öffnet derzeit
+                <strong>Google Maps</strong> im offiziellen Google Play Store.
+                Er ist noch kein Downloadlink für Color Chaser.
+            </p>
+
+            <a
+                class="play-store-link"
+                href="https://play.google.com/store/apps/details?id=com.google.android.apps.maps"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Google Maps im offiziellen Google Play Store öffnen">
+
+                <img
+                    class="play-store-badge"
+                    src="google-play-badge.png"
+                    alt="Jetzt bei Google Play">
+            </a>
+        </section>
+
+        <footer>
+            Der Testlink wird später durch den offiziellen
+            Color-Chaser-Eintrag ersetzt.
+        </footer>
     </main>
 </body>
 </html>
